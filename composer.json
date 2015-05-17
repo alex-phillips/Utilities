@@ -1,0 +1,21 @@
+{
+    "name": "exonintrendo/utilities",
+    "require-dev": {
+        "phpunit/phpunit": "^4.6",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Phillips",
+            "email": "exonintrendo@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": { "": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "": "tests/" }
+    }
+}
