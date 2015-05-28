@@ -5,6 +5,7 @@ namespace Exonintrendo\Utility\Traits;
 use ArrayIterator;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
+use stdClass;
 
 /**
  * Utility class for storing values. Nested values can be set using dot-notation.
@@ -27,7 +28,7 @@ trait Bag
      */
     public function __construct($data = [])
     {
-        if ($data instanceof \stdClass) {
+        if ($data instanceof stdClass) {
             $data = (array)$data;
         }
         $this->add($data);
