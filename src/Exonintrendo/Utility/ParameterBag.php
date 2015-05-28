@@ -6,6 +6,7 @@ use ArrayAccess;
 use IteratorAggregate;
 use JsonSerializable;
 use Countable;
+use stdClass;
 use Exonintrendo\Utility\Traits\Bag;
 
 /**
@@ -16,6 +17,20 @@ use Exonintrendo\Utility\Traits\Bag;
 class ParameterBag implements ArrayAccess, IteratorAggregate, JsonSerializable, Countable
 {
     use Bag;
+
+    public function append($data)
+    {
+        if (is_array($data)) {
+            return $this->merge($data);
+        }
+
+        $this->data[count($this->data)] = $data;
+    }
+
+    public function merge(array $data)
+    {
+        $this->data = array_merge($this->data->raw(), $data);
+    }
 
     /**
      * {@inheritdoc}
@@ -47,7 +62,7 @@ class ParameterBag implements ArrayAccess, IteratorAggregate, JsonSerializable, 
         $key = array_shift($keys);
 
         if (empty($keys)) {
-            if (is_array($value)) {
+            if (is_array($value) || $value instanceof stdClass) {
                 $this->data[$key] = new ParameterBag($value);
             } else {
                 $this->data[$key] = $value;

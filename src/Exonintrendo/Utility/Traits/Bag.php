@@ -43,6 +43,20 @@ trait Bag
         }
     }
 
+    public function append($data)
+    {
+        if (is_array($data)) {
+            return $this->merge($data);
+        }
+
+        $this->data[] = $data;
+    }
+
+    public function merge(array $data)
+    {
+        $this->data = array_merge($this->data, $data);
+    }
+
     /**
      * {@inheritdoc}
      */
