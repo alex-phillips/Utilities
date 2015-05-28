@@ -23,10 +23,13 @@ trait Bag
     /**
      * Construct a new instance of a `ParameterBag`.
      *
-     * @param array $data Data to pre-populate the bag with
+     * @param array|\stdClass $data Data to pre-populate the bag with
      */
-    public function __construct(array $data = [])
+    public function __construct($data = [])
     {
+        if ($data instanceof \stdClass) {
+            $data = (array)$data;
+        }
         $this->add($data);
     }
 
