@@ -63,13 +63,13 @@ class ParameterBag implements ArrayAccess, IteratorAggregate, JsonSerializable, 
 
         if (empty($keys)) {
             if (is_array($value) || $value instanceof stdClass) {
-                $this->data[$key] = new ParameterBag($value);
+                $this->data[$key] = new static($value);
             } else {
                 $this->data[$key] = $value;
             }
         } else {
             if (!$this->has($key)) {
-                $this->data[$key] = new ParameterBag();
+                $this->data[$key] = new static();
             }
 
             $this->data[$key]->set(implode('.', $keys), $value);
