@@ -1,6 +1,6 @@
 <?php
 
-namespace Exonintrendo\Utility;
+namespace Utility;
 
 use ArrayAccess;
 use IteratorAggregate;
