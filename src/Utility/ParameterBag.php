@@ -7,7 +7,7 @@ use IteratorAggregate;
 use JsonSerializable;
 use Countable;
 use stdClass;
-use Exonintrendo\Utility\Traits\Bag;
+use Utility\Traits\Bag;
 
 /**
  * Utility class for storing values. Nested values can be set using dot-notation.
