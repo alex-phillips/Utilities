@@ -1,5 +1,5 @@
 {
-    "name": "exonintrendo/utilities",
+    "name": "alex-phillips/utilities",
     "require-dev": {
         "phpunit/phpunit": "^4.6",
         "squizlabs/php_codesniffer": "^2.3"
@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Alex Phillips",
-            "email": "exonintrendo@gmail.com"
+            "email": "ahp118@gmail.com"
         }
     ],
     "require": {},
