@@ -1,6 +1,6 @@
 <?php
 
-namespace Exonintrendo\Utility\Traits;
+namespace Utility\Traits;
 
 use ArrayIterator;
 use RecursiveArrayIterator;
