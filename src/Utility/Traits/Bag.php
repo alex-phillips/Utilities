@@ -58,7 +58,7 @@ trait Bag
 
     public function merge(array $data)
     {
-        $this->data = array_merge_recursive($this->data, $data);
+        $this->replace(array_merge_recursive($this->data, $data));
     }
 
     /**
