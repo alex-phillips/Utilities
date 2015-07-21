@@ -29,7 +29,7 @@ class ParameterBag implements ArrayAccess, IteratorAggregate, JsonSerializable, 
 
     public function merge(array $data)
     {
-        $this->data = array_merge_recursive($this->data->raw(), $data);
+        $this->data = array_merge_recursive($this->raw(), $data);
     }
 
     /**
