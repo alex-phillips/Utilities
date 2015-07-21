@@ -53,12 +53,12 @@ trait Bag
             return $this->merge($data);
         }
 
-        $this->data[] = $data;
+        return $this->data[] = $data;
     }
 
     public function merge(array $data)
     {
-        $this->data = array_merge($this->data, $data);
+        $this->data = array_merge_recursive($this->data, $data);
     }
 
     /**
