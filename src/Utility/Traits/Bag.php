@@ -70,14 +70,14 @@ trait Bag
     }
 
     /**
-     * Getter method to retriev a value associated with a given key.
+     * Getter method to retrieve a value associated with a given key.
      *
      * @param string $path    The key to fetch
      * @param null   $default The default value to return if the key is not present
      *
      * @return array|null
      */
-    public function get($path, $default = null)
+    public function &get($path, $default = null)
     {
         $keys = explode('.', $path);
         $ary = &$this->data;
@@ -86,7 +86,12 @@ trait Bag
             if (!isset($ary[$key])) {
                 return $default;
             }
-            $ary = &$ary[$key];
+
+            if ($ary instanceof static) {
+                $ary = &$ary->get($key);
+            } else {
+                $ary = &$ary[$key];
+            }
         }
 
         return $ary;
@@ -187,7 +192,7 @@ trait Bag
      */
     public function offsetUnset($key)
     {
-        $this->clear($key);
+        $this->remove($key);
     }
 
     /**
@@ -211,12 +216,17 @@ trait Bag
         $ary = &$this->data;
 
         foreach ($keys as $k) {
-            if (!isset ($ary[$k])) {
+            if (!isset($ary[$k])) {
                 $ary[$k] = [];
             }
 
             $key = &$ary;
-            $ary = &$ary[$k];
+
+            if ($ary instanceof static) {
+                $ary = &$ary->get($k);
+            } else {
+                $ary = &$ary[$k];
+            }
         }
 
         if (isset($key) && isset($k)) {
@@ -252,7 +262,7 @@ trait Bag
     public function set($path, $value)
     {
         $keys = explode('.', $path);
-        $arr =& $this->data;
+        $arr = &$this->data;
 
         while ($key = array_shift($keys)) {
             $arr = &$arr[$key];
